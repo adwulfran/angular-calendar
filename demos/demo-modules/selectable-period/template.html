@@ -1,0 +1,50 @@
+<mwl-demo-utils-calendar-header
+  [(view)]="view"
+  [(viewDate)]="viewDate">
+</mwl-demo-utils-calendar-header>
+
+<div class="text-center">
+  
+  <button class="btn btn-primary" (click)="refreshView(1)">Tous les lundis</button>
+  <button class="btn btn-primary" (click)="refreshView(2)">les mardis</button>
+  <button class="btn btn-primary" (click)="refreshView(3)">les mercredis</button>
+  <button class="btn btn-primary" (click)="refreshView(4)">les jeudis</button>
+  <button class="btn btn-primary" (click)="refreshView(5)">les vendredis</button>
+  <button class="btn btn-primary" (click)="refreshView(6)">les samedis</button>
+  <button class="btn btn-primary" (click)="refreshView(0)">les dimanches</button>
+  <p><button class="btn btn-primary" (click)="refreshAll()">Rafraîchir !</button></p>
+  <p><strong *ngIf="clickedDate">Votre sélection:{{ clickedDate | date:'medium' }}</strong></p>
+
+
+ 
+ 
+</div>
+
+ 
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (beforeViewRender)="beforeMonthViewRender($event)"
+    (dayClicked)="dayClicked($event.day);clickedDate = $event.day.date"
+    
+    >
+
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="'week'"
+    [viewDate]="viewDate"
+    [events]="events"
+     [refresh]="refresh">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="'day'"
+    [viewDate]="viewDate"
+    [events]="events"
+     [refresh]="refresh"
+   >
+  </mwl-calendar-day-view>
+  
+</div>
