@@ -38,26 +38,16 @@
               </ng-template>
             </ngb-tab>
 
-            <ngb-tab *ngFor="let source of activeDemo?.sources">
-              <ng-template ngbTabTitle>
-                <span [ngSwitch]="source.language">
-                  <i class="fa fa-fw fa-html5" *ngSwitchCase="'html'"></i>
-                  <i class="fa fa-fw fa-css3" *ngSwitchCase="'css'"></i>
-                  <i class="fa fa-fw fa-code" *ngSwitchDefault></i>
-                </span>
-                {{ source.filename }}
-              </ng-template>
-              <ng-template ngbTabContent>
-                <pre><code [innerHTML]="source.contents.highlighted"></code></pre>
-              </ng-template>
-            </ngb-tab>
+           
 
           </ngb-tabset>
         </div>
       </div>
     </div>
     <div class="col-md-3">
-      
+      <br>
+      <br><br><br><br><br><br><br><br>
+      <p *ngFor="let message of messages">{{ message | date:'dd-MM-yyyy' }}</p>
     </div>
   </div>
 </div>

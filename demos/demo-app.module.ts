@@ -11,6 +11,7 @@ import { DemoAppComponent } from './demo-app.component';
 import { DemoComponent as DefaultDemoComponent } from './demo-modules/kitchen-sink/component';
 import { DemoModule as DefaultDemoModule } from './demo-modules/kitchen-sink/module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; // ajout personel
+import { SharingDataService } from './sharingdata.service';
 
 
 @NgModule({
@@ -277,6 +278,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; // ajout personel
       }
     )
   ],
+  providers : [SharingDataService],
   bootstrap: [DemoAppComponent]
 })
 export class DemoAppModule {}

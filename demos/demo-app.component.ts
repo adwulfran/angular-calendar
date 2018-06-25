@@ -4,6 +4,9 @@ import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
 import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 
+//notre ajout
+import { SharingDataService } from "./sharingdata.service";
+
 interface Source {
   filename: string;
   contents: {
@@ -86,12 +89,16 @@ export class DemoAppComponent implements OnInit {
   activeDemo: Demo;
   isMenuVisible = false;
   firstDemoLoaded = false;
+  // notre service message
+  messages: any[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sharingdata: SharingDataService) {}
 
   ngOnInit() {
     const defaultRoute = this.router.config.find(route => route.path === '**');
-
+    //notre ajout pour le service 
+    this.sharingdata.currentMessage.subscribe(messages => this.messages = messages);
+    // fin
     this.demos = this.router.config
       .filter(route => route.path !== '**')
       .map(route => ({

@@ -1,3 +1,5 @@
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -6,6 +8,7 @@ import { DemoUtilsModule } from '../demo-utils/module';
 import { DemoComponent } from './component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';// ajout personel
 
+registerLocaleData(localeFr);
 
 @NgModule({
   imports: [
